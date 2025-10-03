@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
+    "build": "next build",  // <-- SCRIPT NÀY LÀ BẮT BUỘC CHO TRIỂN KHAI
     "start": "next start",
     "lint": "eslint"
   },
@@ -13,7 +14,8 @@
     "next": "15.5.4",
     "next-auth": "^4.24.11",
     "react": "19.1.0",
-    "react-dom": "19.1.0"
+    "react-dom": "19.1.0",
+    "vattukc": "file:.."
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
