@@ -9,6 +9,7 @@
   command = "npm run build" 
 
 [build.environment]
-  # BUỘC SỬ DỤNG NODE.JS VÀ NPM PHIÊN BẢN ỔN ĐỊNH
-  NODE_VERSION = "20.x"
+  # SỬA: Dùng số nguyên node version (20) hoặc chỉ định phiên bản cụ thể.
+  # Netlify sẽ tự động chọn phiên bản 20 mới nhất.
+  NODE_VERSION = "20" 
   NPM_VERSION = "9.6.7"
