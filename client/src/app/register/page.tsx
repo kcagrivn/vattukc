@@ -6,6 +6,9 @@ import Link from 'next/link';
 import { User, Mail, Lock, LogIn } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
+// THÊM CẤU HÌNH NÀY VÀO ĐÂY
+export const dynamic = 'force-dynamic';
+
 export default function RegisterPage() {
     const router = useRouter();
     const [formData, setFormData] = useState({

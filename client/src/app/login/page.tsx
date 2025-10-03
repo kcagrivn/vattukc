@@ -6,6 +6,10 @@ import Link from 'next/link';
 import { Mail, Lock, LogIn } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
+// THÊM CẤU HÌNH NÀY VÀO ĐÂY
+export const dynamic = 'force-dynamic';
+// Hoặc 'auto', nhưng 'force-dynamic' là mạnh mẽ nhất
+
 export default function LoginPage() {
     const router = useRouter();
     const [formData, setFormData] = useState({
