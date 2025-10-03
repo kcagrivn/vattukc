@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
-    "build": "next build",  // <-- SCRIPT NÀY LÀ BẮT BUỘC CHO TRIỂN KHAI
+    "build": "next build",
     "start": "next start",
     "lint": "eslint"
   },
