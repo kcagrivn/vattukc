@@ -2,6 +2,7 @@
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  trailingSlash: true,
   // Cấu hình để cho phép tải hình ảnh từ các tên miền ngoài
   images: {
     remotePatterns: [
