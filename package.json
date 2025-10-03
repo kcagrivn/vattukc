@@ -12,9 +12,5 @@
     "monorepo"
   ],
   "author": "",
-  "license": "ISC",
-  "workspaces": [
-    "client",
-    "server"
-  ]
+  "license": "ISC"
 }
