@@ -1,0 +1,14 @@
+# file: vattukc/netlify.toml (Tại thư mục gốc)
+
+[build]
+  # Đặt thư mục cơ sở (Base directory) để Netlify biết nơi tìm mã Frontend
+  base = "client"
+  # Đặt thư mục đầu ra (Publish directory) là thư mục build của Next.js
+  publish = "client/.next"
+  # Lệnh build chính xác (sẽ tự động chạy npm install trước)
+  command = "npm run build" 
+
+[build.environment]
+  # BUỘC SỬ DỤNG NODE.JS VÀ NPM PHIÊN BẢN ỔN ĐỊNH
+  NODE_VERSION = "20"
+  NPM_VERSION = "9.6.7"
