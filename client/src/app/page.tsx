@@ -3,7 +3,7 @@
 import ProductCard from '@/components/ProductCard';
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
-import Pagination from '@/components/Pagination'; // Import Pagination
+import Pagination from '@/components/Pagination';
 
 // Định nghĩa kiểu dữ liệu cho sản phẩm
 interface ProductData {
@@ -16,15 +16,18 @@ interface ProductData {
     ratings: number;
 }
 
+// Khai báo URL Backend (sử dụng biến môi trường công khai)
+// Next.js sẽ thay thế biến này bằng URL Render của bạn
+const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:5000';
+
 // Hàm Fetch dữ liệu từ Backend (Đã sửa lỗi Runtime khi lặp qua searchParams)
 async function getProducts(searchParams: { [key: string]: string | string[] | undefined }) {
     
-    // KHẮC PHỤC LỖI: Sử dụng vòng lặp an toàn và URLSearchParams để tạo chuỗi truy vấn
+    // Sử dụng vòng lặp an toàn và URLSearchParams để tạo chuỗi truy vấn
     const urlSearchParams = new URLSearchParams();
     
     // Lặp qua các key an toàn và thêm chúng vào URLSearchParams
     for (const key in searchParams) {
-        // Next.js cho phép truy cập searchParams[key] an toàn hơn so với Object.entries
         const value = searchParams[key]; 
         
         if (typeof value === 'string' && value) {
@@ -35,8 +38,8 @@ async function getProducts(searchParams: { [key: string]: string | string[] | un
     const urlQuery = urlSearchParams.toString(); // Chuyển đổi an toàn
 
     try {
-        // Gửi tham số tìm kiếm qua URL
-        const res = await fetch(`http://localhost:5000/api/v1/products?${urlQuery}`, {
+        // Gửi tham số tìm kiếm qua URL bằng biến môi trường công khai
+        const res = await fetch(`${BACKEND_URL}/api/v1/products?${urlQuery}`, { 
             cache: 'no-store', 
         });
 
@@ -48,7 +51,7 @@ async function getProducts(searchParams: { [key: string]: string | string[] | un
         const data = await res.json();
         return data.products || []; // Trả về mảng rỗng nếu dữ liệu thiếu
     } catch (error) {
-        console.error("LỖẼI KẾT NỐI API BACKEND:", error);
+        console.error("LỖI KẾT NỐI API BACKEND:", error);
         return []; // Trả về mảng rỗng nếu có lỗi
     }
 }
@@ -67,7 +70,7 @@ export default async function Home({ searchParams }: { searchParams: { [key: str
         imageUrl: "https://via.placeholder.com/300" 
     };
     
-    // Tạo 8 sản phẩm giả lập an toàn nếu API trả về mảng rỗng 
+    // Tạo 8 sản phẩm giả lập an toàn nếu API trả về mảng rỗng
     const displayProducts = products.length > 0 
         ? products 
         : Array(8).fill(demoProductData).map((p, i) => ({ ...p, _id: i.toString() })); 
