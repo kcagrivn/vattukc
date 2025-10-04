@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "npm install tailwindcss postcss autoprefixer && next build", // <-- LỆNH ĐÃ SỬA DỨT ĐIỂM
+    "build": "next build"
     "start": "next start",
     "lint": "next lint"
   },
