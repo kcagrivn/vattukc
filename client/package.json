@@ -1,10 +1,12 @@
+// file: client/package.json
+
 {
   "name": "client",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build",
+    "build": "npm install tailwindcss postcss autoprefixer && next build", // <-- LỆNH ĐÃ SỬA DỨT ĐIỂM
     "start": "next start",
     "lint": "next lint"
   },
