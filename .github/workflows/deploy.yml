@@ -8,7 +8,11 @@ on:
 jobs:
   build:
     name: 🧱 Build Project
-    runs-on: ubuntu-latest
+    run: |
+    cd client
+    npm ci
+    npm run build
+
 
     steps:
       - name: 🌀 Checkout source code
