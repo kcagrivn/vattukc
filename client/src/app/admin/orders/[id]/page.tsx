@@ -1,12 +1,12 @@
-import React from 'react';
+import React from "react";
 
-interface OrderPageProps {
+interface OrderDetailPageProps {
   params: {
     id: string;
   };
 }
 
-export default function OrderDetailPage({ params }: OrderPageProps) {
+export default function OrderDetailPage({ params }: OrderDetailPageProps) {
   const { id } = params;
 
   return (
