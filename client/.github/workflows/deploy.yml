@@ -1,0 +1,31 @@
+name: CI/CD Deploy vattukc.com
+
+on:
+  push:
+    branches:
+      - main  # Mỗi khi push lên nhánh main thì tự động chạy
+
+jobs:
+  build:
+    name: 🧱 Build Project
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🌀 Checkout source code
+        uses: actions/checkout@v4
+
+      - name: 📦 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: 📂 Move to client & install dependencies
+        run: |
+          cd client
+          npm ci
+
+      - name: 🏗 Build Next.js project
+        run: |
+          cd client
+          npm run build
+
