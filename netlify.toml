@@ -1,0 +1,15 @@
+# file: vattukc/netlify.toml (Tại thư mục gốc)
+
+[build]
+  # Thư mục cơ sở: Đặt là client (nơi chứa file package.json của Frontend)
+  base = "client"
+  # Thư mục đầu ra: Tên dự án Next.js build
+  publish = ".next"
+  # Lệnh build: Chạy lệnh build chuẩn của Next.js
+  command = "npm run build" 
+
+[build.environment]
+  # SỬA: Dùng số nguyên node version (20) hoặc chỉ định phiên bản cụ thể.
+  # Netlify sẽ tự động chọn phiên bản 20 mới nhất.
+  NODE_VERSION = "20" 
+  NPM_VERSION = "9.6.7"
