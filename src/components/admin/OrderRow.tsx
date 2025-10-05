@@ -1,24 +1,29 @@
-import React from 'react'
-
-interface AdminOrder {
-  _id: string
-  customerName: string
-  totalAmount: number
-  status: string
-  // 👉 Thêm các trường bạn đang dùng thực tế ở đây
-}
+import React from "react";
+import { AdminOrder } from "@/types/order";
 
 interface OrderRowProps {
-  order: AdminOrder
+  order: AdminOrder;
 }
 
 export default function OrderRow({ order }: OrderRowProps) {
   return (
     <tr>
-      <td>{order.customerName}</td>
-      <td>{order.totalAmount}</td>
-      <td>{order.status}</td>
+      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+        {order._id}
+      </td>
+      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+        {order.customerName || "—"}
+      </td>
+      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+        {order.totalAmount?.toLocaleString() || 0} ₫
+      </td>
+      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+        {order.status || "Chưa xác định"}
+      </td>
+      <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+        <button className="text-green-600 hover:text-green-900">Xem</button>
+      </td>
     </tr>
-  )
+  );
 }
 
