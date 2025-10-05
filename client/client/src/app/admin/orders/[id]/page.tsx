@@ -1,15 +1,23 @@
 import React from "react";
 
-interface OrderDetailParams {
-  id: string;
+interface PageProps {
+  params: {
+    id: string;
+  };
 }
 
-// ✅ Đây là cách đúng để nhận params trong Next.js App Router
-export default function OrderDetailPage({ params }: { params: OrderDetailParams }) {
+// ❌ KHÔNG cần tạo interface riêng tên OrderDetailPageProps nữa
+// ✅ Next.js App Router sẽ tự động truyền params từ URL vào
+export default async function OrderDetailPage({ params }: PageProps) {
+  const { id } = params;
+
+  // Ở đây bạn có thể fetch dữ liệu từ server nếu cần
+  // const order = await fetchOrderById(id);
+
   return (
     <div className="p-4">
-      <h1 className="text-2xl font-bold">Chi tiết đơn hàng</h1>
-      <p>ID đơn hàng: {params.id}</p>
+      <h1 className="text-2xl font-bold mb-2">Chi tiết đơn hàng</h1>
+      <p>ID đơn hàng: {id}</p>
     </div>
   );
 }
