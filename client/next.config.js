@@ -1,32 +1,15 @@
-// file: client/next.config.js
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // THUỘC TÍNH FIX LỖI 404 VERCEL: Đảm bảo mọi tuyến đường đều có dấu gạch chéo cuối
-  trailingSlash: true, 
-  
-  // Cấu hình để cho phép tải hình ảnh từ các tên miền ngoài
-  images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'via.placeholder.com', // Cho phép hình ảnh placeholder
-        port: '',
-        pathname: '/**',
-      },
-    ],
+  // ✅ Bỏ qua lỗi ESLint khi build trên CI/CD (không cần cài eslint)
+  eslint: {
+    ignoreDuringBuilds: true,
   },
-  
-  // CẤU HÌNH PROXY: Chuyển hướng các yêu cầu /api/v1/... sang Backend cục bộ (cổng 5000)
-  async rewrites() {
-    return [
-      {
-        // Yêu cầu này chỉ dùng cho môi trường phát triển (localhost)
-        source: '/api/v1/:path*', 
-        destination: 'http://localhost:5000/api/v1/:path*',
-      },
-    ];
-  },
+
+  // ⚡ Chỉ định thư mục gốc chuẩn cho tracing khi có nhiều lockfile
+  outputFileTracingRoot: __dirname,
+
+  // (Tuỳ chọn) Nếu bạn dùng basePath hoặc i18n thì có thể thêm ở đây
 };
 
 module.exports = nextConfig;
+
