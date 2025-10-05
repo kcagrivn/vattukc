@@ -9,9 +9,8 @@ import { useCart } from "@/context/CartContext";
 const CartPage: React.FC = () => {
   const { cart, removeFromCart, clearCart, increaseQuantity, decreaseQuantity } = useCart();
 
-  // Tính tổng tiền & tổng số lượng
   const totalQuantity = cart.reduce((sum, item) => sum + item.quantity, 0);
-  const totalAmount = cart.reduce((sum, item) => sum + item.quantity * item.price, 0);
+  const totalAmount = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   if (totalQuantity === 0) {
     return (
@@ -95,11 +94,12 @@ const CartPage: React.FC = () => {
           >
             Xóa tất cả
           </button>
-          <button
+          <Link
+            href="/checkout"
             className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700"
           >
             Thanh toán
-          </button>
+          </Link>
         </div>
       </div>
     </div>
