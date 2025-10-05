@@ -1,0 +1,9 @@
+# robots.txt cho vattukc.com
+User-agent: *
+Allow: /
+
+Disallow: /admin/
+Disallow: /api/
+
+Sitemap: https://vattukc.com/sitemap.xml
+
